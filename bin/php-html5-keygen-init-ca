@@ -1,0 +1,66 @@
+#!/usr/bin/php
+<?php
+
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+use fkooman\Ini\IniReader;
+use fkooman\Cert\CertManager;
+
+try {
+    $config = IniReader::fromFile(dirname(__DIR__).'/config/config.ini');
+
+    $storageDir = $config->v('Common', 'storageDir');
+    $keySize = $config->v('CA', 'keySize');
+    $commonName = $config->v('CA', 'commonName');
+
+    $caDir = sprintf('%s/ca', $storageDir);
+    if (!file_exists($caDir)) {
+        if (false === @mkdir($caDir)) {
+            throw new Exception('unable to create ca directory');
+        }
+    }
+        
+    $certManager = new CertManager();
+    $caData = $certManager->generateCertificateAuthority($keySize, $commonName);
+
+    // write CA certificate
+    if (false === @file_put_contents(sprintf('%s/ca.pem', $caDir), $caData['crt'])) {
+        throw new Exception('unable to write certificate');
+    }
+
+    // write CA private key
+    if (false === @file_put_contents(sprintf('%s/ca.key', $caDir), $caData['key'])) {
+        throw new Exception('unable to write private key');
+    }
+} catch (Exception $e) {
+    echo $e->getMessage().PHP_EOL;
+    exit(1);
+}
+
+#$caDir = dirname(__DIR__).'/data/ca';
+
+#// create private key for CA cert
+#$CAPrivKey = new Crypt_RSA();
+#extract($CAPrivKey->createKey($keySize));
+#$CAPrivKey->loadKey($privatekey);
+
+#$pubKey = new Crypt_RSA();
+#$pubKey->loadKey($publickey);
+#$pubKey->setPublicKey();
+
+
+#// create a self-signed cert that'll serve as the CA
+#$subject = new File_X509();
+#$subject->setDNProp('CN', $commonName);
+#$subject->setPublicKey($pubKey);
+
+#$issuer = new File_X509();
+#$issuer->setPrivateKey($CAPrivKey);
+#$issuer->setDN($CASubject = $subject->getDN());
+
+#$x509 = new File_X509();
+#$x509->makeCA();
+
+#$result = $x509->sign($issuer, $subject, 'sha256WithRSAEncryption');
+#file_put_contents($caDir.'/ca.crt', $x509->saveX509($result));
+#file_put_contents($caDir.'/ca.key', $privatekey);

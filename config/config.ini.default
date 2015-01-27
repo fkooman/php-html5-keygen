@@ -1,0 +1,6 @@
+[Common]
+storageDir = '/var/lib/php-html5-keygen'
+
+[CA]
+commonName = 'Demo CA'
+keySize = 2048

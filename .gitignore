@@ -1,3 +1,4 @@
+/config/*.ini
 /vendor
 /.php_cs.cache
 /data
