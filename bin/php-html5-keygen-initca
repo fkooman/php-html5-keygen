@@ -1,0 +1,35 @@
+#!/usr/bin/php
+<?php
+
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+$keySize = 2048;
+$caDN = 'WebID CA';
+
+$caDir = dirname(__DIR__).'/data/ca';
+
+// create private key for CA cert
+$CAPrivKey = new Crypt_RSA();
+extract($CAPrivKey->createKey($keySize));
+$CAPrivKey->loadKey($privatekey);
+
+$pubKey = new Crypt_RSA();
+$pubKey->loadKey($publickey);
+$pubKey->setPublicKey();
+
+
+// create a self-signed cert that'll serve as the CA
+$subject = new File_X509();
+$subject->setDNProp('CN', $caDN);
+$subject->setPublicKey($pubKey);
+
+$issuer = new File_X509();
+$issuer->setPrivateKey($CAPrivKey);
+$issuer->setDN($CASubject = $subject->getDN());
+
+$x509 = new File_X509();
+$x509->makeCA();
+
+$result = $x509->sign($issuer, $subject, 'sha256WithRSAEncryption');
+file_put_contents($caDir.'/ca.crt', $x509->saveX509($result));
+file_put_contents($caDir.'/ca.key', $privatekey);

@@ -1,0 +1,8 @@
+{
+    "description": "Software to manage client certificates generated in the user's browser",
+    "license": " Apache-2.0",
+    "name": "fkooman/html5-keygen",
+    "require": {
+        "phpseclib/phpseclib": "~0.3.9"
+    }
+}
