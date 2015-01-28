@@ -19,12 +19,11 @@ try {
             throw new Exception('unable to create ca directory');
         }
     }
-        
-    $certManager = new CertManager();
-    $caData = $certManager->generateCertificateAuthority($keySize, $commonName);
+
+    $caData = CertManager::generateCertificateAuthority($keySize, $commonName);
 
     // write CA certificate
-    if (false === @file_put_contents(sprintf('%s/ca.pem', $caDir), $caData['crt'])) {
+    if (false === @file_put_contents(sprintf('%s/ca.crt', $caDir), $caData['crt'])) {
         throw new Exception('unable to write certificate');
     }
 
