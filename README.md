@@ -8,6 +8,21 @@ This software is currently tested with Mozilla Firefox.
 * [https://wiki.mozilla.org/CA:Certificate_Download_Specification](https://wiki.mozilla.org/CA:Certificate_Download_Specification)
 * [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen)
 
+# Development
+
+    $ cd /var/www
+    $ sudo mkdir php-html5-keygen
+    $ sudo chown fkooman.fkooman php-html5-keygen
+    $ git clone https://github.com/fkooman/php-html5-keygen.git
+    $ cd php-html5-keygen
+    $ /path/to/composer.phar install
+    $ mkdir -p data
+    $ sudo chown -R apache.apache data
+    $ sudo semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/php-html5-keygen/data(/.*)?'
+    $ sudo restorecon -R /var/www/php-html5-keygen/data
+    $ cd config
+    $ cp config.ini.default config.ini
+
 # License
 Licensed under the GNU Affero General Public License as published by the Free
 Software Foundation, either version 3 of the License, or (at your option) any

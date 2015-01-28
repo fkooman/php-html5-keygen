@@ -10,16 +10,20 @@ use Twig_Environment;
 
 class KeygenService extends Service
 {
+    /** @var fkooman\Cert\PdoStorage */
+    private $db;
+
     /** @var string */
     private $caCrt;
 
     /** @var string */
     private $caKey;
 
-    public function __construct($caCrt, $caKey)
+    public function __construct(PdoStorage $db, $caCrt, $caKey)
     {
         parent::__construct();
-
+        
+        $this->db = $db;
         $this->caCrt = $caCrt;
         $this->caKey = $caKey;
 
@@ -84,14 +88,13 @@ class KeygenService extends Service
         }
 
         // determine serialNumber
-        $serialNumber = 2342345;
         $commonName = bin2hex(
             openssl_random_pseudo_bytes(16)
         );
         // we want to keep a list of CN/serial for book keeping and revocation
 
-        $certManager = new CertManager($this->caCrt, $this->caKey);
-        $clientCert = $certManager->generateClientCertificate($spkac, $commonName, $serialNumber, $format);
+        $certManager = new CertManager($this->db, $this->caCrt, $this->caKey);
+        $clientCert = $certManager->generateClientCertificate($spkac, $commonName, $format);
 
         $response = new Response(200, 'application/x-x509-user-cert');
         $response->setContent($clientCert);

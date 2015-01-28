@@ -5,10 +5,22 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 
 use fkooman\Ini\IniReader;
 use fkooman\Cert\CertManager;
+use fkooman\Cert\PdoStorage;
 
 try {
     $config = IniReader::fromFile(dirname(__DIR__).'/config/config.ini');
 
+    // initialize the DB
+    $pdo = new PDO(
+        $config->v('PdoStorage', 'dsn'),
+        $config->v('PdoStorage', 'username', false),
+        $config->v('PdoStorage', 'password', false)
+    );
+
+    $pdoStorage = new PdoStorage($pdo);
+    $pdoStorage->initDatabase();
+
+    // initialize the CA
     $storageDir = $config->v('Common', 'storageDir');
     $keySize = $config->v('CA', 'keySize');
     $commonName = $config->v('CA', 'commonName');
