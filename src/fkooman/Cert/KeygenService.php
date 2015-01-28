@@ -84,7 +84,7 @@ class KeygenService extends Service
         }
 
         // determine serialNumber
-        $serialNumber = 234234;
+        $serialNumber = 2342345;
         $commonName = bin2hex(
             openssl_random_pseudo_bytes(16)
         );

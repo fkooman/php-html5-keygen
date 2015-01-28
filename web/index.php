@@ -4,6 +4,8 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 
 use fkooman\Cert\KeygenService;
 use fkooman\Ini\IniReader;
+use fkooman\Http\Exception\InternalServerErrorException;
+use fkooman\Http\Exception\HttpException;
 
 try {
     $iniReader = IniReader::fromFile(
