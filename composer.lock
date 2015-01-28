@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "44b6c38bac1600bde8d5a1a6f87063b8",
+    "hash": "6adf16826bd6b0b059ac64d8c284e3d0",
     "packages": [
         {
             "name": "fkooman/ini",
@@ -42,6 +42,87 @@
             ],
             "description": "Handle INI configuration files",
             "time": "2014-10-23 15:33:28"
+        },
+        {
+            "name": "fkooman/json",
+            "version": "0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fkooman/php-lib-json.git",
+                "reference": "556209cf34cdf55f90eefffd778f93a3e9d5bb2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fkooman/php-lib-json/zipball/556209cf34cdf55f90eefffd778f93a3e9d5bb2d",
+                "reference": "556209cf34cdf55f90eefffd778f93a3e9d5bb2d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "fkooman\\Json": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "François Kooman",
+                    "email": "fkooman@tuxed.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to encode and decode JSON",
+            "time": "2014-10-22 12:49:20"
+        },
+        {
+            "name": "fkooman/rest",
+            "version": "0.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fkooman/php-lib-rest.git",
+                "reference": "5c9cb54f032938d56d5ed0a22998960cc1b57c01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fkooman/php-lib-rest/zipball/5c9cb54f032938d56d5ed0a22998960cc1b57c01",
+                "reference": "5c9cb54f032938d56d5ed0a22998960cc1b57c01",
+                "shasum": ""
+            },
+            "require": {
+                "fkooman/json": "~0.6.0",
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "fkooman/rest-plugin-basic": "Basic Authentication plugin",
+                "fkooman/rest-plugin-bearer": "Bearer (OAuth) Authentication plugin",
+                "fkooman/rest-plugin-mellon": "Mellon (SAML) Authentication plugin"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "fkooman\\Http": "src/",
+                    "fkooman\\Rest": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "François Kooman",
+                    "email": "fkooman@tuxed.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple PHP library for writing REST services.",
+            "time": "2015-01-24 14:29:31"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -140,6 +221,63 @@
                 "x509"
             ],
             "time": "2014-11-10 03:08:59"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.18.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/4cf7464348e7f9893a93f7096a90b73722be99cf",
+                "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.18-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2015-01-25 17:32:08"
         }
     ],
     "packages-dev": [],
@@ -148,6 +286,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.3.3"
+    },
     "platform-dev": []
 }

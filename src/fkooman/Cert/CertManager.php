@@ -10,6 +10,12 @@ class CertManager
     const FORMAT_PEM = 0;
     const FORMAT_DER = 1;
 
+    /** @var string */
+    private $caCrt;
+
+    /** @var string */
+    private $caKey;
+
     public function __construct($caCrt, $caKey)
     {
         $this->caCrt = $caCrt;
@@ -64,9 +70,8 @@ class CertManager
         $subject->setDNProp('CN', $commonName);
 
         $x509 = new File_X509();
-        // FIXME: add Subject Key Identifier???
-        // FIXME: keep track of serial and update it every time
-        // FIXME: does any other base make sense?
+        // FIXME: add Subject Key Identifier?
+        // FIXME: does any other base for serial numbers make sense?
         $x509->setSerialNumber($serialNumber, 10);
 
         $result = $x509->sign($issuer, $subject, 'sha256WithRSAEncryption');
