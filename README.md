@@ -2,11 +2,7 @@
 This aims to be a complete solution to generate client side certificates from 
 a self-signed CA using PHP software.
 
-This software is currently tested with Mozilla Firefox.
-
-# References
-* [https://wiki.mozilla.org/CA:Certificate_Download_Specification](https://wiki.mozilla.org/CA:Certificate_Download_Specification)
-* [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen)
+This software is currently tested with Mozilla Firefox and Chromium.
 
 # Development
 
@@ -22,6 +18,10 @@ This software is currently tested with Mozilla Firefox.
     $ sudo restorecon -R /var/www/php-html5-keygen/data
     $ cd config
     $ cp config.ini.default config.ini
+
+# References
+* [https://wiki.mozilla.org/CA:Certificate_Download_Specification](https://wiki.mozilla.org/CA:Certificate_Download_Specification)
+* [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen)
 
 # License
 Licensed under the GNU Affero General Public License as published by the Free

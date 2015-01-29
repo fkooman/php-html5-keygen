@@ -4,7 +4,7 @@ $pearDir   = '/usr/share/pear';
 $baseDir   = dirname(__DIR__);
 
 require_once $vendorDir.'/Symfony/Component/ClassLoader/UniversalClassLoader.php';
-require_once $vendorDir.'/phpseclib/phpseclib/phpseclib/Crypt/Random.php';
+#require_once $pearDir.'/Crypt/Random.php';
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 
@@ -22,12 +22,9 @@ $loader->registerNamespaces(
 );
 
 $loader->registerPrefixes(array(
-    'Twig_'               => array($pearDir, $vendorDir),
-#    'System' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
-#    'Net' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
-#    'Math' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
-#    'File' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
-#    'Crypt' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
+    'Twig_'   => array($pearDir, $vendorDir),
+    'File_'   => array($pearDir, $vendorDir),
+    'Crypt_'  => array($pearDir, $vendorDir)
 ));
 
 $loader->register();
