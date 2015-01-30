@@ -28,6 +28,10 @@ Requires:   php-composer(fkooman/rest) >= 0.6.5
 Requires:   php-composer(fkooman/rest) < 0.7.0
 Requires:   php-pear(pear.twig-project.org/Twig) >= 1.15
 Requires:   php-pear(pear.twig-project.org/Twig) < 2.0
+Requires:   php-pear(phpseclib.sourceforge.net/File_X509) >= 0.3.9
+Requires:   php-pear(phpseclib.sourceforge.net/File_X509) < 0.4.0
+Requires:   php-pear(phpseclib.sourceforge.net/Crypt_RSA) >= 0.3.9
+Requires:   php-pear(phpseclib.sourceforge.net/Crypt_RSA) < 0.4.0
 
 #Starting F21 we can use the composer dependency for Symfony
 #Requires:   php-composer(symfony/classloader) >= 2.3.9
@@ -66,7 +70,7 @@ cp -pr bin/* ${RPM_BUILD_ROOT}%{_bindir}
 
 # Config
 mkdir -p ${RPM_BUILD_ROOT}%{_sysconfdir}/php-html5-keygen
-cp -p config/config.ini.defaults ${RPM_BUILD_ROOT}%{_sysconfdir}/php-html5-keygen/config.ini
+cp -p config/config.ini.default ${RPM_BUILD_ROOT}%{_sysconfdir}/php-html5-keygen/config.ini
 ln -s ../../../etc/php-html5-keygen ${RPM_BUILD_ROOT}%{_datadir}/php-html5-keygen/config
 
 # Data

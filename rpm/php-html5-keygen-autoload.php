@@ -4,7 +4,6 @@ $pearDir   = '/usr/share/pear';
 $baseDir   = dirname(__DIR__);
 
 require_once $vendorDir.'/Symfony/Component/ClassLoader/UniversalClassLoader.php';
-#require_once $pearDir.'/Crypt/Random.php';
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 
