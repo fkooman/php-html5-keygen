@@ -1,0 +1,17 @@
+{
+    "authors": [
+        {
+            "email": "fkooman@tuxed.net",
+            "name": "Fran\u00e7ois Kooman"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "fkooman\\Keygen\\": "src/"
+        }
+    },
+    "name": "fkooman/keygen",
+    "require": {
+        "phpseclib/phpseclib": "^2.0"
+    }
+}
