@@ -4,6 +4,10 @@ Simple HTML `<keygen>` demo.
 
 # Prepare
 
+You need [https://getcomposer.org](Composer). 
+
+    $ git clone https://github.com/fkooman/php-html5-keygen.git
+    $ cd php-html5-keygen
     $ composer install
     $ mkdir data
     $ php initCa.php
